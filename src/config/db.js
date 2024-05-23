@@ -7,7 +7,7 @@ const db = mysql.createPool({
     password: process.env.DB_PWD,
     database: process.env.DB_NAME,
 })
-+db.getConnection(()=>{
+db.getConnection(()=>{
     console.log('db connected!')
 })
 
