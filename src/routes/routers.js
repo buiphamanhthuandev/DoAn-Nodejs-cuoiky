@@ -1,12 +1,20 @@
 const express = require('express');
 
 const accController = require('../controllers/accControllers');
-const layoutUser = require('../controllers/layoutUser');
+const homeUserControllers = require('../controllers/layoutUserControllers/homeUserControllers');
+const chiTietPostControllers = require('../controllers/layoutUserControllers/chiTietPostControllers');
+const lienHeControllers = require('../controllers/layoutUserControllers/lienHeControllers');
 const layoutAdmin = require('../controllers/layoutAdmin');
+const timKiemPostControllers = require('../controllers/layoutUserControllers/timKiemPostControllers');
 const router = express.Router();
-//Layout User
-router.get('/',layoutUser.getHomeUser);
 
+//Layout User
+router.get('/',homeUserControllers.getHomeUser);
+router.get('/phanloai',homeUserControllers.getPhanLoaiPosts);
+router.get('/chitietbaiviet',chiTietPostControllers.getChiTietBaiViet);
+router.post('/thembinhluan',chiTietPostControllers.postThemBinhLuan);
+router.post('/lienhe',lienHeControllers.postLienHe);
+router.post('/searchbaiviet',timKiemPostControllers.postTimKiem);
 //Layout Admin 
 router.get('/admin',layoutAdmin.getHomeAdmin);
 

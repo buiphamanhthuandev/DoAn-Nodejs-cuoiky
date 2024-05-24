@@ -1,0 +1,73 @@
+<div class="container">
+    <section>
+        <h4>Chi tiết bài viết</h4>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="row">
+                    <% resultChiTietPost.forEach((item)=>{ %>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <img class="card-img-top" style="width: 750px; height: 400px;" src="images/<%= item.HinhAnh %>" alt="<%= item.HinhAnh %>">
+                                <div class="card-body">
+                                    <h4 class="card-title"><%= item.TieuDe %></h4>
+                                    <p class="card-text truncate-2"><%= item.NoiDung %></p>
+                                    <p><%= item.NgayDang %></p>
+                                    <p style="text-align: right;" >Tác giả bài viết<span><%= item.TacGia %></span></p>
+                                </div>
+                            </div>
+                        </div>  
+                </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <h4>Thêm bình luận</h4>
+                            <form action="/thembinhluan?id=<%= item.id %>" method="POST" style="width: 500px;">
+                                <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" class="form-control" id="Email" placeholder="Email" name="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nội dung</label>
+                                    <input type="text" class="form-control" id="NoiDung" placeholder="Nội dung bình luận" name="NoiDung">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Bình luận</button>
+                            </form>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <h4>Bài viết</h4>
+                            <% for(let index = 0; index < resultPostDanhMucLimit.length; index++) { %> 
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultPostDanhMucLimit[index].HinhAnh %>" alt="<%= resultPostDanhMucLimit[index].HinhAnh %>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultPostDanhMucLimit[index].id %>"><%= resultPostDanhMucLimit[index].TieuDe %></a></h5>
+                                            <p class="card-text truncate-2"><%= resultPostDanhMucLimit[index].NoiDung.slice(0,100) %>...</p>
+                                            <!-- .slice(0,100) -->
+                                            <a href="/chitietbaiviet?id=<%= resultPostDanhMucLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
+                                        </div>
+                                    </div>
+                                </div>  
+                            <% } %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>   
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <aside class="right_content">
+                    <h2>Xem nhiều nhất</h2>
+                      <% for(let index = 0;index < resultViewLimit.length;index++){ %>
+                          <div class="card">
+                              <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultViewLimit[index].HinhAnh %>" alt="<%= resultViewLimit[index].HinhAnh %>">
+                              <div class="card-body">
+                                  <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultViewLimit[index].id %>"><%= resultViewLimit[index].TieuDe %></a></h5>
+                                  <p class="card-text truncate-2"><%= resultViewLimit[index].NoiDung.slice(0,100) %>...</p>
+                                  <!-- .slice(0,100) -->
+                                  <a href="/chitietbaiviet?id=<%= resultViewLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
+                              </div>
+                          </div>
+                      <% } %>
+                  </aside>
+            </div>
+        </div>
+        <hr>
+    </section>
+</div>
