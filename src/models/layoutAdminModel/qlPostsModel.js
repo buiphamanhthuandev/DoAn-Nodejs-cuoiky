@@ -14,6 +14,46 @@ class qlPostsModel{
             });
         });
     }
+    // Thêm bài viết
+    static async postAddPosts(TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc){
+        return new Promise(resolve =>{
+            let sqlAddPosts = 'INSERT INTO baiviet(TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc) VALUES(?, ?, ?, ?, ?)';
+            conn.query(sqlAddPosts,[TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc],(error)=>{
+                if(!error){
+                    resolve(true);
+                }else{
+                    console.log(error);
+                    resolve(false);
+                }
+            });
+        });
+    }
+    // sửa bài viết 
+    static async getEditPosts(id){
+        return new Promise(resolve =>{
+            let sqlGetEditPosts = 'SELECT * FROM baiviet WHERE id = ?';
+            conn.query(sqlGetEditPosts,[id],(error,resultPosts)=>{
+                if(!error){
+                    resolve(resultPosts);
+                }else{
+                    console.log(error);
+                }
+            });
+        });
+    }
+    static async postEditPosts(TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc,id){
+        return new Promise(resolve => {
+            let sqlEditPost = 'UPDATE baiviet SET TieuDe = ?, NoiDung = ?, TacGia = ?, HinhAnh = ?, MaDanhMuc = ? WHERE id = ?';
+            conn.query(sqlEditPost,[TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc,id],(error) =>{
+                if(!error){
+                    resolve(true);
+                }else{
+                    console.log(error);
+                    resolve(false);
+                }
+            });
+        });
+    }
 }
 
 module.exports = qlPostsModel;

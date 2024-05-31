@@ -1,0 +1,40 @@
+<div class="container">
+    <% resultPosts.forEach((item)=> { %> 
+        <form action="/suabaiviet/<%=item.id%>" method="POST">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Tieu De</label>
+                <input type="text" class="form-control" value="<%=item.TieuDe%>" id="TieuDe" name="TieuDe">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Noi dung</label>
+                  <input type="text" class="form-control" value="<%=item.NoiDung%>" id="NoiDung" name="NoiDung">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Tac Gia</label>
+                  <input type="text" class="form-control" value="<%=item.TacGia%>" id="TacGia" name="TacGia">
+                </div>
+                <div class="mb-3">
+                    <label for="client">Danh mục</label>
+                    <select id="MaDanhMuc" name="MaDanhMuc">
+                        <!-- Xuất tên danh mục khi edit -->
+                        <% resultAllCategory.forEach(itemMaDanhMuc => {%>
+                            <% if(itemMaDanhMuc == item.MaDanhMuc) {%>
+                                <option value="<%=itemMaDanhMuc.MaDanhMuc%>" name="<%= itemMaDanhMuc.TenDanhMuc %>"><%= itemMaDanhMuc.TenDanhMuc %></option>
+                            <% } %>
+                        <% }) %>
+                        <!-- xuất all danh mục còn lại  -->
+                        <% resultAllCategory.forEach(itemMaDanhMuc => {%>
+                            <% if(itemMaDanhMuc != item.MaDanhMuc) {%>
+                                <option value="<%= itemMaDanhMuc.id %>" name="<%= itemMaDanhMuc.TenDanhMuc %>"><%= itemMaDanhMuc.TenDanhMuc %></option>
+                            <% } %>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputFile">Hình ảnh</label>
+                    <input type="file" id="exampleInputFile" value="<%=item.HinhAnh%>" name="HinhAnh">
+                </div>
+            <button class="btn" type="submit" class="btn btn-primary" style="margin-left: 1030px;">Sửa</button>
+        </form>
+    <%})%>
+</div>

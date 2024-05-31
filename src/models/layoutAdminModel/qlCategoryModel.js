@@ -12,7 +12,7 @@ class qlCategoryModel{
                     console.log(error);
                 }
             });
-        })
+        });
     }
 }
 

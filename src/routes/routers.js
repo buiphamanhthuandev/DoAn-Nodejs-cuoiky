@@ -31,6 +31,9 @@ router.post('/suanguoidung/:id',qlUserControllers.postEditUser);
 router.get('/xoanguoidung/:id',qlUserControllers.getDelUser);
 //quản lý bài viết 
 router.get('/quanlybaiviet',qlPostsControllers.homeQlPosts);
+router.get('/thembaiviet',qlPostsControllers.getAddPosts);
+router.post('/thembaiviet',qlPostsControllers.postAddPosts);
+router.get('/suabaiviet/:id',qlPostsControllers.getEditPosts);
 
 //quản lý danh mục bài viết
 router.get('/quanlydanhmuc',qlCategoryControllers.homeQlCategory);
