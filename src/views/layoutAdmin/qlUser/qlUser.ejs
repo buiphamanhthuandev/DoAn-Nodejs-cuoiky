@@ -1,0 +1,29 @@
+<div class="container">
+    <h2><a href="/themnguoidung" class="btn btn-primary">Thêm Tài khoản</a></h2>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">TÊN ĐĂNG NHẬP</th>
+                <th scope="col">MẬT KHẨU</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">VAI TRÒ</th>
+                <th scope="col">SỬA</th>
+                <th scope="col">XÓA</th>
+             </tr> 
+        </thead>     
+        <% resultAllUser.forEach((item)=> { %>
+            <tbody>
+                <tr>
+                    <th scope="row"><%=item.id%></th>
+                    <td><%=item.TenDangNhap%></td>
+                    <td><%=item.MatKhau%></td>
+                    <td><%=item.Email%></td>
+                    <td><%=item.VaiTro%></td>
+                    <td><a href="/suanguoidung/<%=item.id%>" class="btn btn-warning">EDIT</a></td>
+                    <td><a href="/xoanguoidung/<%=item.id%>" class="btn btn-danger">DELETE</a></td>
+                </tr>
+            </tbody>
+        <%})%>
+    </table>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Email</th>
+            <th scope="col">SDT</th>
+            <th scope="col">Tiêu đề liên hệ</th>
+            <th scope="col">Nội dung liên hệ</th>
+            <th scope="col">DELETE</th>
+
+          </tr>
+        </thead>
+        <tbody>
+            <% resultAllContact.forEach((item)=> { %>
+                <tr>
+                    
+                    <th scope="row"><%=item.id%></th>
+                    <td><%=item.Ten%></td>
+                    <td><%=item.Email%></td>
+                    <td><%=item.SoDienThoai%></td>
+                    <td><%=item.TieuDeLienHe%></td>
+                    <td><%=item.NoiDungLienHe%></td>
+                    <td><a href="/capnhatlienhe/<%=item.id%>" class="btn btn-warning">DELETE</a></td>
+                </tr>
+                <%})%>
+        </tbody>
+      </table>
+</div>

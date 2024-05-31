@@ -11,13 +11,14 @@
           </script>
         <% }%>
         <div class="col-lg-8 col-md-8 col-sm-8">
+          <!-- Xuất bài viết -->
           <div class="row">
               <% for(let index = 0; index < resultPostLimit.length; index++) { %> 
                   <div class="col-md-6">
                       <div class="card">
                           <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultPostLimit[index].HinhAnh %>" alt="<%= resultPostLimit[index].HinhAnh %>">
                           <div class="card-body">
-                              <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultPostLimit[index].id %>"><%= resultPostLimit[index].TieuDe %></a></h5>
+                              <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultPostLimit[index].id %>"><%= resultPostLimit[index].TieuDe.slice(0,60) %>...</a></h5>
                               <p class="card-text truncate-2"><%= resultPostLimit[index].NoiDung.slice(0,100) %>...</p>
                               <!-- .slice(0,100) -->
                               <a href="/chitietbaiviet?id=<%= resultPostLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
@@ -26,6 +27,7 @@
                   </div>  
               <% } %>
           </div>
+          <!-- Phân trang -->
           <nav aria-label="Page navigation" style="text-align: center;">
             <ul class="pagination">
               <% if(resultAllPosts.length >= 11) {%>

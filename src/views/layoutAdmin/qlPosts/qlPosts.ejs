@@ -1,0 +1,35 @@
+<div class="container">
+    <h4><a href="/thembaiviet" class="btn btn-primary">Thêm bài viết</a></h4>
+    <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TIEUDE</th>
+            <th scope="col">NGAYDANG</th>
+            <th scope="col">NOIDUNG</th>
+            <th scope="col">TACGIA</th>
+            <th scope="col">MADANHMUC</th>
+            <th scope="col">VIEWS</th>
+            <th scope="col">HINHANH</th>
+            <th scope="col">EDIT</th>
+            <th scope="col">DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% resultAllPosts.forEach((item)=> { %>
+                <tr>
+                    <th scope="row"><%=item.id%></th>
+                    <td><%=item.TieuDe%></td>
+                    <td><%=item.NgayDang%></td>
+                    <td><%=item.NoiDung%></td>
+                    <td><%=item.TacGia%></td>
+                    <td><%=item.MaDanhMuc%></td>
+                    <td><%=item.views%></td>
+                    <td> <img class="card-img-top" style="width: 200px; height: 100px;" src="/images/<%= item.HinhAnh %>" alt="<%= item.HinhAnh %>"></td>
+                    <td><a href="/suabaiviet/<%=item.id%>" class="btn btn-warning">EDIT</a></td>
+                    <td><a href="/xoabaiviet/<%=item.id%>" class="btn btn-danger">DELETE</a></td>
+                </tr>
+                <%})%>
+        </tbody>
+      </table>
+</div>
