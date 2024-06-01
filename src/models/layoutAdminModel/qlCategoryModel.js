@@ -64,8 +64,8 @@ class qlCategoryModel{
                     console.log(error);
                     resolve(false);
                 }
-            })
-        })
+            });
+        });
     }
 }
 

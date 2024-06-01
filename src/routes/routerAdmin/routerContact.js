@@ -5,5 +5,6 @@ const qlContactControllers = require('../../controllers/layoutAdminControllers/q
 
 //quản lý liên hệ
 router.get('/quanlylienhe',qlContactControllers.homeQlContact);
+router.get('/capnhatlienhe/:id',qlContactControllers.getDelContact);
 
 module.exports = router;

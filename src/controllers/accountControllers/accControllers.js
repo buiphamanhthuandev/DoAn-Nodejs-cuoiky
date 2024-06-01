@@ -1,4 +1,4 @@
-const accountModel = require('../models/accountModel');
+const accountModel = require('../../models/accountModel/accountModel');
 
 class accController{
     // nhận giá trị đăng nhập

@@ -1,4 +1,4 @@
-const conn = require('../config/db');
+const conn = require('../../config/db');
 
 class accountModel{
     static async postLogin(username,password){

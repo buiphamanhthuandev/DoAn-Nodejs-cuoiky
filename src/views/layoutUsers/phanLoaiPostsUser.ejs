@@ -1,15 +1,7 @@
 <div class="container">
+  <h4>Phân loại</h4> <hr>
     <section>
       <div class="row">
-        <h4>Phân loại</h4> <hr>
-        <% if(ktLienHe == 1){ %>
-          <div class="alert alert-success" role="alert">Thêm liên hệ thành công</div>
-          <script>
-            setTimeout(()=>{
-              document.querySelector('.alert').style.display = 'none';
-            },2000);
-          </script>
-        <% }%>
         <div class="col-lg-8 col-md-8 col-sm-8">
           <div class="row">
               <% for(let index = 0; index < resultPlPostLimit.length; index++) { %> 

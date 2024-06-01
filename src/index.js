@@ -7,8 +7,12 @@ const session = require('express-session');
 const app = express()
 const port = process.env.PORT || 8888;
 const multer = require('multer');
-const router = require('./routes/routers');
-const routerAdmin = require('./routes/routerAdmin/routerAdmin');
+// router account
+const routerAccount = require('./routes/routerAccount/routerAccount');
+// router layoutUser
+const routerLayoutUser = require('./routes/routerUser/routerUsers');
+// router layoutAdmin
+const routerLayoutAdmin = require('./routes/routerAdmin/routerAdmin');
 const routerQlPosts = require('./routes/routerAdmin/routerPosts');
 const routerCategory = require('./routes/routerAdmin/routerCategory');
 const routerUser = require('./routes/routerAdmin/routerUser');
@@ -38,8 +42,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage});
 
-app.use(router);
-app.use(routerAdmin);
+app.use(routerAccount);
+app.use(routerLayoutUser);
+app.use(routerLayoutAdmin);
 app.use(routerQlPosts(upload));//truyền multer vào routes
 app.use(routerCategory);
 app.use(routerUser);

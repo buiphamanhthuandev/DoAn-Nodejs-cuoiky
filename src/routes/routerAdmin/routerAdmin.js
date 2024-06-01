@@ -1,6 +1,6 @@
 const express = require('express');
 
-const layoutAdmin = require('../../controllers/layoutAdmin');
+const layoutAdmin = require('../../controllers/layoutAdminControllers/homeAdminControllers');
 const router = express.Router();
 
 //Layout Admin 

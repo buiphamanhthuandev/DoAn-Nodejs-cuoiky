@@ -1,57 +1,58 @@
 <div class="container">
+    <h4>Tìm kiếm</h4> <hr>
     <section>
-      <div class="row">
-        <h4>Tìm kiếm</h4> <hr>
-        <% if(ktLienHe == 1){ %>
-          <div class="alert alert-success" role="alert">Thêm liên hệ thành công</div>
-          <script>
-            setTimeout(()=>{
-              document.querySelector('.alert').style.display = 'none';
-            },2000);
-          </script>
-        <% }%>
-        <div class="col-lg-8 col-md-8 col-sm-8">
-          <div class="row">
-              <% for(let index = 0; index < resultTimKiemPostLimit.length; index++) { %> 
-                  <div class="col-md-6">
-                      <div class="card">
-                          <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultTimKiemPostLimit[index].HinhAnh %>" alt="<%= resultTimKiemPostLimit[index].HinhAnh %>">
-                          <div class="card-body">
-                              <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultTimKiemPostLimit[index].id %>"><%= resultTimKiemPostLimit[index].TieuDe %></a></h5>
-                              <p class="card-text truncate-2"><%= resultTimKiemPostLimit[index].NoiDung.slice(0,100) %>...</p>
-                              <!-- .slice(0,100) -->
-                              <a href="/chitietbaiviet?id=<%= resultTimKiemPostLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <% if(resultTimKiem.length > 0){ %>
+              <!-- Bài viết tìm kiếm giới hạn  -->
+              <div class="row">
+                  <% for(let index = 0; index < resultTimKiemPostLimit.length; index++) { %> 
+                      <div class="col-md-6">
+                          <div class="card">
+                              <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultTimKiemPostLimit[index].HinhAnh %>" alt="<%= resultTimKiemPostLimit[index].HinhAnh %>">
+                              <div class="card-body">
+                                  <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultTimKiemPostLimit[index].id %>"><%= resultTimKiemPostLimit[index].TieuDe %></a></h5>
+                                  <p class="card-text truncate-2"><%= resultTimKiemPostLimit[index].NoiDung.slice(0,100) %>...</p>
+                                  <!-- .slice(0,100) -->
+                                  <a href="/chitietbaiviet?id=<%= resultTimKiemPostLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
+                              </div>
                           </div>
-                      </div>
-                  </div>  
-              <% } %>
+                      </div>  
+                  <% } %>
+              </div>
+              <!-- Phân trang tìm kiếm -->
+              <nav aria-label="Page navigation" style="text-align: center;">
+                <ul class="pagination">
+                  <% if(resultTimKiem.length >= 11) {%>
+                    <% for(let i = 1; i <= Math.ceil(resultTimKiem.length / 11); i++) {%>
+                      <li><a href="/?page=<%= i %>"><%= i %></a></li>
+                    <% } %>
+                  <% } %>
+                </ul>
+              </nav>
+            <% }else { %>
+              <div class="row">
+                <h4>Không tìm thấy kết quả!</h4>
+              </div>
+            <% } %>
           </div>
-          <nav aria-label="Page navigation" style="text-align: center;">
-            <ul class="pagination">
-              <% if(resultTimKiem.length >= 11) {%>
-                <% for(let i = 1; i <= Math.ceil(resultTimKiem.length / 11); i++) {%>
-                  <li><a href="/?page=<%= i %>"><%= i %></a></li>
+          <!-- Bài viết xem nhiều nhất -->
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <aside class="right_content">
+              <h2>Xem nhiều nhất</h2>
+                <% for(let index = 0;index < resultViewLimit.length;index++){ %>
+                    <div class="card">
+                        <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultViewLimit[index].HinhAnh %>" alt="<%= resultViewLimit[index].HinhAnh %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultViewLimit[index].id %>"><%= resultViewLimit[index].TieuDe %></a></h5>
+                            <p class="card-text truncate-2"><%= resultViewLimit[index].NoiDung.slice(0,100) %>...</p>
+                            <!-- .slice(0,100) -->
+                            <a href="/chitietbaiviet?id=<%= resultViewLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
+                        </div>
+                    </div>
                 <% } %>
-              <% } %>
-            </ul>
-          </nav>
+            </aside>
+          </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <aside class="right_content">
-            <h2>Xem nhiều nhất</h2>
-              <% for(let index = 0;index < resultViewLimit.length;index++){ %>
-                  <div class="card">
-                      <img class="card-img-top" style="width: 300px; height: 180px;" src="images/<%= resultViewLimit[index].HinhAnh %>" alt="<%= resultViewLimit[index].HinhAnh %>">
-                      <div class="card-body">
-                          <h5 class="card-title"><a href="/chitietbaiviet?id=<%= resultViewLimit[index].id %>"><%= resultViewLimit[index].TieuDe %></a></h5>
-                          <p class="card-text truncate-2"><%= resultViewLimit[index].NoiDung.slice(0,100) %>...</p>
-                          <!-- .slice(0,100) -->
-                          <a href="/chitietbaiviet?id=<%= resultViewLimit[index].id %>" class="btn btn-primary">Xem chi tiết</a>
-                      </div>
-                  </div>
-              <% } %>
-          </aside>
-        </div>
-      </div>
     </section>
   </div>

@@ -9,6 +9,7 @@ class lienHeModel{
                     resolve(true);
                 }else{
                     console.log(error);
+                    resolve(false);
                 }
             })
         })
