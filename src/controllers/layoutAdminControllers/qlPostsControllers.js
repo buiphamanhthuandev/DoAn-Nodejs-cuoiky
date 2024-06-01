@@ -25,7 +25,7 @@ class qlPostsControllers{
             let NoiDung = req.body.NoiDung;
             let TacGia = req.body.TacGia;
             let MaDanhMuc = req.body.MaDanhMuc;
-            let HinhAnh = req.body.HinhAnh;
+            let HinhAnh = req.file ? `${req.file.filename}`:'';
             const resultAddPost = await qlPostsModel.postAddPosts(TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc);
             if(resultAddPost == true){
                 res.redirect('/quanlybaiviet');
@@ -43,6 +43,31 @@ class qlPostsControllers{
             res.render('layoutAdmin/layoutAdmin',{content:'../layoutAdmin/qlPosts/editPosts.ejs',ktLogin:{logined: logined,username:username},resultPosts:resultPosts,resultAllCategory:resultAllCategory});
         }
     }
+    static async postEditPosts(req,res){
+        try{
+            let id = req.params.id;
+            let TieuDe = req.body.TieuDe;
+            let NoiDung = req.body.NoiDung;
+            let TacGia = req.body.TacGia;
+            let MaDanhMuc = req.body.MaDanhMuc;
+            let HinhAnh = req.file ? req.file.filename : req.body.currentHinhAnh;
+            const resultEditPosts = await qlPostsModel.postEditPosts(TieuDe,NoiDung,TacGia,HinhAnh,MaDanhMuc,id);
+            if(resultEditPosts == true){
+                res.redirect('/quanlybaiviet');
+            }
+        }
+        catch{}
+    }
+    //Xóa bài viết => cập nhật trạng thái
+    static async getDelPosts(req,res){
+        try {
+            let id = req.params.id;
+            const resultDelPosts = await qlPostsModel.getDelPosts(id);
+            if(resultDelPosts == true){
+                res.redirect('/quanlybaiviet');
+            }
+        } catch{ }
+    } 
 }
 
 module.exports = qlPostsControllers;

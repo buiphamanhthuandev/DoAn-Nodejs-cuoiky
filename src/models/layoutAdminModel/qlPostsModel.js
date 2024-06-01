@@ -54,6 +54,20 @@ class qlPostsModel{
             });
         });
     }
+    // Xóa bài viết => cập nhật trạng thái
+    static async getDelPosts(id){
+        return new Promise(resolve =>{
+            let sqlDelPosts = 'UPDATE baiviet SET TrangThai = 0 WHERE id = ?';
+            conn.query(sqlDelPosts,[id],(error)=>{
+                if(!error){
+                    resolve(true);
+                }else{
+                    console.log(error);
+                    resolve(false);
+                }
+            })
+        })
+    }
 }
 
 module.exports = qlPostsModel;

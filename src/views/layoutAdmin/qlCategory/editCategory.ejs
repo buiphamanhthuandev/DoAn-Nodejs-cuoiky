@@ -1,0 +1,16 @@
+<div class="container">
+    <h4>Sửa danh mục bài viết</h4>
+    <% resultCategory.forEach((item)=> { %>
+        <form method="post" action="/suadanhmuc/<%=item.id%>">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Tên Danh Mục</label>
+                    <input type="text" class="form-control" id="TenDanhMuc" name="TenDanhMuc" value="<%=item.TenDanhMuc%>">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Mật Khẩu</label>
+                    <input type="text" class="form-control" id="MoTaDanhMuc" name="MoTaDanhMuc" value="<%=item.MoTaDanhMuc%>">
+                </div>       
+            <button type="submit" class="btn btn-primary" style="margin-left: 1030px;">Sửa</button>
+        </form>
+    <%})%>
+</div>

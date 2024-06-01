@@ -1,20 +1,20 @@
 <div class="container">
     <h4>Thêm bài viết</h4>
-    <form method="POST" action="/thembaiviet">
+    <form method="POST" action="/thembaiviet" enctype="multipart/form-data">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Tiêu Đề</label>
+          <label for="TieuDe" class="form-label">Tiêu Đề</label>
           <input type="text" class="form-control" id="TieuDe" name="TieuDe">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Nội Dung</label>
+            <label for="NoiDung" class="form-label">Nội Dung</label>
             <input type="text" class="form-control" id="NoiDung" name="NoiDung">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Tác Giả</label>
+            <label for="TacGia" class="form-label">Tác Giả</label>
             <input type="text" class="form-control" id="TacGia" name="TacGia">
         </div>
         <div class="mb-3">
-            <label for="client">Danh mục</label>
+            <label for="MaDanhMuc">Danh mục</label>
             <select id="MaDanhMuc" name="MaDanhMuc">
                 <option>Chọn danh mục muốn thêm</option>
                 <% resultAllCategory.forEach(item => {%>
@@ -23,8 +23,8 @@
             </select>
         </div>
         <div class="mb-3">
-            <label for="exampleInputFile">Hình ảnh</label>
-            <input type="file" id="exampleInputFile" name="HinhAnh">
+            <label for="HinhAnh">Hình ảnh</label>
+            <input type="file" id="HinhAnh" name="HinhAnh">
         </div>
         <button type="submit" class="btn btn-primary" style="margin-left: 1030px;">Submit</button>
     </form>
